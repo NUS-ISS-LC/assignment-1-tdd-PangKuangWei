@@ -10,10 +10,10 @@ import static org.junit.Assert.assertTrue;
 
 public class ToDoListTest  {
     // Define Test Fixtures
-    public String s1;
-    public String s2;
-    public Task t1;
-    public Task t2;
+    private String s1;
+    private String s2;
+    private Task t1;
+    private Task t2;
 
     public ToDoListTest() {
         super();
@@ -38,7 +38,7 @@ public class ToDoListTest  {
         ToDoList toDoList =  new ToDoList();
         toDoList.addTask(t1);
         
-        assertEquals(toDoList.getTask(s1), t1);
+        assertEquals(t1, toDoList.getTask(s1));
     }
 
     @Test
@@ -56,16 +56,17 @@ public class ToDoListTest  {
         ToDoList toDoList =  new ToDoList();
         toDoList.addTask(t1);
         
-        assertEquals(toDoList.removeTask(s1), t1);
+        assertEquals(t1, toDoList.removeTask(s1));
+        assertEquals(0, toDoList.getAllTasks().size());
     }
 
     @Test
     public void testGetCompletedTasks() {
         ToDoList toDoList = new ToDoList();
-        assertEquals(toDoList.getAllTasks().size(), 0);
+        assertEquals(0, toDoList.getAllTasks().size());
         toDoList.addTask(t1);
-        assertEquals(toDoList.getAllTasks().size(), 1);
+        assertEquals(1, toDoList.getAllTasks().size());
         toDoList.addTask(t2);
-        assertEquals(toDoList.getAllTasks().size(), 2);
+        assertEquals(2, toDoList.getAllTasks().size());
     }
 }
